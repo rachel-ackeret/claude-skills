@@ -21,27 +21,23 @@ Right away, propose a short kebab-case slug for the work (e.g. `bulk-pdf-upload`
 
 Both files exist on disk **from the first turn** — start with stubs (just the section headers from the templates in [[pr-workflow]]) and fill them in as the conversation progresses. Rachel can open and edit them directly at any time.
 
-### 1. One question at a time
+### 1. Draft first, then ask only where it matters
 
-Drive the conversation by asking **one focused question per turn**. No batches, no multi-part questions. After each answer, update the relevant file on disk and ask the next.
+After Rachel's opening pitch:
 
-Rough order — but follow the conversation, don't force it:
+1. **Investigate the repo** enough to make informed guesses about relevant files, current wiring, and constraints.
+2. **Fill in `scope.md` and `plan.md` with your best recommendation** — don't leave sections as `_TBD_` if you can make a defensible guess. Treat the draft as a strawman for Rachel to redirect, not a blank form for her to fill out.
+3. **Air your assumptions explicitly.** At the top of the first reply, list the load-bearing assumptions you made while drafting (e.g. "I assumed the constraint is X, that we're keeping stack Y, that Z is out of scope"). Rachel can knock any of them down in one line.
+4. **Then surface real decisions** as multi-choice questions using `AskUserQuestion`, batched where independent. Examples:
+   - "For the design, I'd go (a) approach A. Worth considering (b) B or (c) C?"
+   - "Scope assumes we only handle case X. Should we also cover (a) Y, (b) Z, (c) neither?"
+5. Only fall back to open-ended questions when there's genuinely no defensible default (unclear motivation, unknown stakeholder, missing domain knowledge).
 
-1. **What problem are we solving?** (1-2 sentences for `scope.md` → Problem)
-2. **Why does it matter / what triggered this?** (motivation → Why it matters)
-3. **What are the constraints?** (deadlines, must-not-breaks, stack lock-ins → Constraints)
-4. **What's explicitly out of scope?** (Out of scope — prevents scope creep)
-5. **What files/systems are involved?** (Relevant files & systems — investigate the repo yourself first, then confirm with Rachel)
-6. **Are there design tradeoffs to weigh?** (Design considerations — present options, not a single recommendation, when there's a real choice)
-7. **What's the first concrete step?** (start populating `plan.md`)
-8. **What's the next step? …and the next?** (build out the checklist incrementally)
-9. **How will we verify this works?** (Verification section of `plan.md`)
+The goal: Rachel reviews and redirects, rather than answering a questionnaire.
 
-If Rachel already answered something in her opening pitch, skip that question — don't ask what you already know.
+### 2. Investigate before you draft
 
-### 2. Investigate as you go
-
-When a question depends on the codebase (relevant files, what currently exists, how something is wired), **do the investigation yourself** before asking. Then ask a sharper question: "I see `X.tsx` handles upload — is that the right entry point, or is there a new flow you want?" beats "Which files are involved?"
+The draft is only useful if it's informed. Before writing the strawman, read the relevant files yourself — don't ask Rachel "which files are involved?" when you can grep. Sharper question beats lazier question: "I see `X.tsx` handles upload — keep that entry point or new flow?" beats "Which files are involved?"
 
 ### 3. Keep the files clean
 
@@ -64,7 +60,9 @@ Don't auto-invoke `/pr-workflow` — Rachel triggers it.
 
 ## Hard rules
 
-- **One question at a time.** No question batches, no multi-part questions.
+- **Draft before asking.** Investigate the repo and write a best-guess scope/plan before turning to Rachel. No blank-form interrogations.
+- **Air assumptions up front.** List the load-bearing guesses behind the draft so Rachel can knock any down in one line.
+- **Prefer multi-choice over open-ended.** Use `AskUserQuestion` with concrete options when there's a real fork; reserve open questions for cases with no defensible default.
 - **Files on disk from turn 1.** Don't keep drafts in conversation only.
 - **Don't write code.** Shaping is about scope and plan, not implementation. If Rachel starts asking you to implement, remind her that `/pr-workflow` is the next phase.
 - **Don't cut a branch or open a PR.** That's `/pr-workflow`'s job.
