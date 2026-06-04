@@ -29,13 +29,18 @@ Rachel's default way of working on non-trivial tasks. **Only run when explicitly
 - Work through `plan.md` in order. Tick items as they're done (edit the file, push).
 - Push implementation commits to the same PR. Keep the PR in draft until the plan is fully executed.
 - When everything in `plan.md` is checked off, mark the PR ready for review.
+- Highlight to Rachel any top items that she should pay the closest attention to for review. (i.e. lower confidence decisions, assumptions, risky decisions)
 
-### Phase 4 — Merge
+### Phase 4 — Cleanup
 
-- **Rachel approves and merges.** Never merge yourself.
-- Before marking ready for review, decide what happens to the plan docs:
-  - **`plan.md`** — delete it. It's ephemeral; the merged diff + commit history is the record.
-  - **`scope.md`** — ask Rachel: delete, or promote to `docs/architecture/<slug>.md` if it captured durable design decisions worth keeping as a reference.
+- Ask for Rachel's verbal approval that the main work is confidently done to move forward with cleanup.
+- Markdown Docs:
+  - **`plan.md`** — delete it.
+  - **`scope.md`** — promote to `docs/architecture/<slug>.md` summarized into a clear architecture document (remove unimportant microscopic details). 
+- Delete any debug statements that will bloat the logs without clear purpose shall be removed.
+- Delete any useless files or now unused code added during this session.
+- Another pass to check for duplicative code that could confidently be made DRY.
+- Any new bugs or issues found while working on this need to be added to a new file in /issues, documenting what you found.
 
 ## Hard Rules
 
