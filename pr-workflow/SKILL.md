@@ -28,6 +28,7 @@ Rachel's default way of working on non-trivial tasks. **Only run when explicitly
 
 - Work through `plan.md` in order. Tick items as they're done (edit the file, push).
 - Push implementation commits to the same PR. Keep the PR in draft until the plan is fully executed.
+- Always add or modify at least one test in the relevant place for these changes if it adds a new feature or fixes something broken. Suggest adding a test if you are not sure if it is required.
 - When everything in `plan.md` is checked off, mark the PR ready for review.
 - Highlight to Rachel any top items that she should pay the closest attention to for review. (i.e. lower confidence decisions, assumptions, risky decisions)
 
